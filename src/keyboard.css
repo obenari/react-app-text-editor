@@ -35,7 +35,7 @@ body {
 .key-btn {
   margin: 0.1%;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: rgb(189, 221, 233);
+  /* background-color: rgb(189, 221, 233); */
   border-radius: 30px;
   font-weight: bold;
 }
