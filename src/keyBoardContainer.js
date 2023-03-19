@@ -1,30 +1,27 @@
-import React, { Component } from 'react';
-import KeyBoard from './keyBoard';
-import WhiteBoard from './whiteBoard';
+import React, { Component } from "react";
+import Keyboard1 from "./keyboard1";
 
 class KeyBoardContainer extends Component {
-    
-	constructor(props) {
-		super(props);
-		this.state = {
-			text: '',
-		};
-	}
- 
+  constructor() {
+    super();
+    this.state = {
+      text: "",
+    };
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
 
-    handleKeyPress(newText) {
-		this.setState({text: newText});
-	}
+  handleKeyPress(newText) {
+    this.setState({ text: this.state.text + newText });
+  }
 
-    render() { 
-        return (
-            <div>
-                <WhiteBoard>{this.state.text}</WhiteBoard>
-                <KeyBoard  onPress={(val) => this.handleKeyPress(val)}/>
-            
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <div>{this.state.text} </div>
+        <Keyboard1 onPress={this.handleKeyPress} />
+      </div>
+    );
+  }
 }
- 
-export default KeyBoardContainer ;
+
+export default KeyBoardContainer;
