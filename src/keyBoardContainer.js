@@ -12,7 +12,11 @@ class KeyBoardContainer extends Component {
   }
 
   handleKeyPress(newText) {
-    this.setState({ text: this.state.text + newText });
+    if (newText === "Backspace") {
+      this.setState({ text: this.state.text.slice(0, -1) });
+    } else {
+      this.setState({ text: this.state.text + newText });
+    }
   }
 
   render() {

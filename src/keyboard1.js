@@ -28,13 +28,30 @@ class Keybord1 extends Component {
         break;
       }
       case "Tab": {
-        this.props.onPress("tab");
+        this.props.onPress("\t");
         break;
       }
       case "Enter": {
         this.props.onPress("\n");
         break;
       }
+      case "hebrew": {
+        this.setState({ keyboardLayout: hebrewLayout });
+        break;
+      }
+      case "English": {
+        this.setState({ keyboardLayout: englishLayout });
+        break;
+      }
+      case "Space": {
+        this.props.onPress(" ");
+        break;
+      }
+      case "Backspace": {
+        this.props.onPress(key);
+        break;
+      }
+
       default: {
         this.props.onPress(key);
       }
