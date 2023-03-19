@@ -38,7 +38,7 @@ class KeyBoard extends Component {
    
     render() { 
         
-        return ();
+        return (<p></p>);
     }
 }
  
