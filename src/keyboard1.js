@@ -1,61 +1,16 @@
 import React, { Component } from "react";
+import {
+  englishLayout,
+  englishLayoutUpperCase,
+  hebrewLayout,
+} from "./keyboardTypes.js";
 
 class Keybord1 extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       selectedKey: "",
-      englishLayout: [
-        [
-          "`",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "0",
-          "-",
-          "=",
-          "Backspace",
-        ],
-        [
-          "Tab",
-          "q",
-          "w",
-          "e",
-          "r",
-          "t",
-          "y",
-          "u",
-          "i",
-          "o",
-          "p",
-          "[",
-          "]",
-          "\\",
-        ],
-        [
-          "CapsLock",
-          "a",
-          "s",
-          "d",
-          "f",
-          "g",
-          "h",
-          "j",
-          "k",
-          "l",
-          ";",
-          "'",
-          "Enter",
-        ],
-        ["shiftl", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "shiftr"],
-        ["hebrew", ".com", "@", "Space"],
-      ],
+      keyboardLayout: englishLayout,
     };
   }
   handleKeyClick(key) {
@@ -64,9 +19,8 @@ class Keybord1 extends Component {
   render() {
     return (
       <div>
-        <div>Selected key: {this.state.selectedKey}</div>
         <div className="keyboard">
-          {this.state.englishLayout.map((row) =>
+          {this.state.keyboardLayout.map((row) =>
             row.map((key) => (
               <button
                 key={key}
