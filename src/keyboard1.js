@@ -3,7 +3,9 @@ import {
   englishLayout,
   englishLayoutUpperCase,
   hebrewLayout,
+  keyClasses,
 } from "./keyboardTypes.js";
+import "./keyboard.css";
 
 class Keybord1 extends Component {
   constructor(props) {
@@ -41,16 +43,20 @@ class Keybord1 extends Component {
 
   render() {
     return (
-      <div>
-        <div className="keyboard">
-          {this.state.keyboardLayout.map((row) =>
-            row.map((key) => (
-              <button key={key} onClick={() => this.checKey(key)}>
+      <div className="keyboard">
+        {this.state.keyboardLayout.map((row) => (
+          <div key={row[0] + "div"} style={{ width: "100%", display: "flex" }}>
+            {row.map((key) => (
+              <button
+                className={keyClasses[key] + " key-btn"}
+                key={key}
+                onClick={() => this.checKey(key)}
+              >
                 {key}
               </button>
-            ))
-          )}
-        </div>
+            ))}
+          </div>
+        ))}
       </div>
     );
   }

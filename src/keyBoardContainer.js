@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Keyboard1 from "./keyboard1";
+import WhiteBoard from "./whiteBoard";
 
 class KeyBoardContainer extends Component {
   constructor() {
@@ -16,8 +17,8 @@ class KeyBoardContainer extends Component {
 
   render() {
     return (
-      <div>
-        <div>{this.state.text} </div>
+      <div style={{ height: "100%" }}>
+        <WhiteBoard text={this.state.text} />
         <Keyboard1 onPress={this.handleKeyPress} />
       </div>
     );

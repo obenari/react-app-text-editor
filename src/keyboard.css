@@ -1,0 +1,41 @@
+html,
+body {
+  box-sizing: border-box;
+}
+
+.keyboard {
+  margin: 3%;
+  width: "85%";
+  display: "block";
+}
+.width10 {
+  flex: 10%;
+  padding: 0.5%;
+}
+.width6 {
+  flex: 6%;
+  padding: 0.5%;
+}
+.width12 {
+  flex: 12%;
+  padding: 0.5%;
+}
+.width14 {
+  flex: 14%;
+  padding: 0.5%;
+}
+.width40 {
+  flex: 40%;
+  padding: 0.5%;
+}
+.width20 {
+  flex: 20%;
+  padding: 0.5%;
+}
+.key-btn {
+  margin: 0.1%;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: rgb(189, 221, 233);
+  border-radius: 30px;
+  font-weight: bold;
+}
