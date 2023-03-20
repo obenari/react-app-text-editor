@@ -57,7 +57,7 @@ class Keybord1 extends Component {
       }
       case "emoji": {
         this.setState({ keyboardLayout: emojiList1 });
-        is.setState({ flagEmoji: true });
+        /* this.setState({ flagEmoji: true });*/
         break;
       }
 
