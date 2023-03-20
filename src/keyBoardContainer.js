@@ -9,6 +9,7 @@ class KeyBoardContainer extends Component {
       text: "",
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleEmojiClick = this.handleEmojiClick.bind(this);
   }
 
   handleKeyPress(newText) {
@@ -18,12 +19,18 @@ class KeyBoardContainer extends Component {
       this.setState({ text: this.state.text + newText });
     }
   }
+  handleEmojiClick(newEmoji) {
+    this.setState({ text: this.state.text + newEmoji });
+  }
 
   render() {
     return (
       <div style={{ height: "100%" }}>
         <WhiteBoard text={this.state.text} />
-        <Keyboard1 onPress={this.handleKeyPress} />
+        <Keyboard1
+          onPress={this.handleKeyPress}
+          onEmojiClick={this.handleEmojiClick}
+        />
       </div>
     );
   }
