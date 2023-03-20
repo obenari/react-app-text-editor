@@ -5,6 +5,7 @@ import {
   hebrewLayout,
   emojiList,
   keyClasses,
+  emojiList1,
 } from "./keyboardTypes.js";
 import "./keyboard.css";
 
@@ -55,8 +56,7 @@ class Keybord1 extends Component {
         break;
       }
       case "emoji": {
-        this.setState({ keyboardLayout: emojiList });
-        this.setState({ flagEmoji: true });
+        this.setState({ keyboardLayout: emojiList1 });
         break;
       }
 
@@ -79,7 +79,7 @@ class Keybord1 extends Component {
               onClick={() => this.onEmojiClick(emoji)}
               style={{ fontSize: "2rem", padding: "0.5rem", cursor: "pointer" }}
             >
-              {emoji}
+              {"\uD83E\uDD1F"}
             </span>
           ))}
         </div>
