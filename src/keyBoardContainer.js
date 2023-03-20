@@ -9,18 +9,18 @@ class KeyBoardContainer extends Component {
       text: "",
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleEmojiClick = this.handleEmojiClick.bind(this);
   }
-
   handleKeyPress(newText) {
-    if (newText === "Backspace") {
-      this.setState({ text: this.state.text.slice(0, -1) });
+    if (newText === "Backspace" || newText === "Bcksp") {
+      if (this.state.text.charCodeAt(this.state.text.length - 1) > 255) {
+        //check whether the last chracter is emoji
+        this.setState({ text: this.state.text.slice(0, -2) });
+      } else {
+        this.setState({ text: this.state.text.slice(0, -1) });
+      }
     } else {
       this.setState({ text: this.state.text + newText });
     }
-  }
-  handleEmojiClick(newEmoji) {
-    this.setState({ text: this.state.text + newEmoji });
   }
 
   render() {

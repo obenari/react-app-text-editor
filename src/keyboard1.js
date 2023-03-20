@@ -18,7 +18,7 @@ class Keybord1 extends Component {
       flagEmoji: false,
     };
     this.checKey = this.checKey.bind(this);
-    this.onEmojiClick = this.onEmojiClick.bind(this);
+    //this.onEmojiClick = this.onEmojiClick.bind(this);
   }
 
   checKey(key) {
@@ -56,7 +56,7 @@ class Keybord1 extends Component {
         break;
       }
       case "emoji": {
-        this.setState({ keyboardLayout: emojiList1 });
+        this.setState({ keyboardLayout: emojiList1, flagEmoji: true });
         /* this.setState({ flagEmoji: true });*/
         break;
       }
@@ -67,21 +67,40 @@ class Keybord1 extends Component {
     }
   }
   onEmojiClick(emoji) {
-    this.props.onEmojiClick(emoji);
+    switch (emoji) {
+      case "hebrew": {
+        this.setState({ keyboardLayout: hebrewLayout, flagEmoji: false });
+        break;
+      }
+      case "English": {
+        this.setState({ keyboardLayout: englishLayout, flagEmoji: false });
+        break;
+      }
+      default: {
+        this.props.onPress(emoji);
+      }
+    }
   }
 
   mapKeyboard() {
     if (this.state.flagEmoji) {
       return (
         <div>
-          {this.state.keyboardLayout.map((emoji, index) => (
-            <span
-              key={index}
-              onClick={() => this.onEmojiClick(emoji)}
-              style={{ fontSize: "2rem", padding: "0.5rem", cursor: "pointer" }}
+          {this.state.keyboardLayout.map((emojiRow) => (
+            <div
+              key={emojiRow[0] + "div"}
+              style={{ width: "100%", display: "flex" }}
             >
-              {emoji}
-            </span>
+              {emojiRow.map((emoji) => (
+                <button
+                  className={"emoji-btn"}
+                  key={emoji}
+                  onClick={() => this.onEmojiClick(emoji)}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
           ))}
         </div>
       );
