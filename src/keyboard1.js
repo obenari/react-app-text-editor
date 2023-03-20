@@ -57,6 +57,7 @@ class Keybord1 extends Component {
       }
       case "emoji": {
         this.setState({ keyboardLayout: emojiList1 });
+        is.setState({ flagEmoji: true });
         break;
       }
 
@@ -79,7 +80,7 @@ class Keybord1 extends Component {
               onClick={() => this.onEmojiClick(emoji)}
               style={{ fontSize: "2rem", padding: "0.5rem", cursor: "pointer" }}
             >
-              {"\uD83E\uDD1F"}
+              {emoji}
             </span>
           ))}
         </div>
