@@ -8,7 +8,13 @@ class KeyBoardContainer extends Component {
     super();
     this.state = {
       text: "",
-      style: "",
+      style: {
+        fontSize: "16px",
+        color: "#000000",
+        fontStyle: "unitalic",
+        fontWeight: "unbold",
+        textDecorationLine: "ununderline",
+      },
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleStylePress = this.handleStylePress.bind(this);

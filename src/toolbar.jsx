@@ -8,32 +8,55 @@ class Toolbar extends Component {
       fontSize: "16px",
       color: "#000000",
       bold: false,
+      fontWeight: "unbold",
+      fontStyle: "unitalic",
       italic: false,
     };
     this.handleFontSizeChange = this.handleFontSizeChange.bind(this);
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleBoldClick = this.handleBoldClick.bind(this);
     this.handleItalicClick = this.handleItalicClick.bind(this);
+    // this.styles = {
+    //   fontSize: "16px",
+    //   color: "#000000",
+    //   bold: false,
+    //   italic: false,
+    // };
   }
 
   handleFontSizeChange(e) {
+    //this.setState({ fontSize: e.target.value });
+    //this.state.fontSize = e.target.value;
+    //this.props.onPress(this.state.fontSize);
+    //this.styles.fontSize = e.target.value;
+    let styles = { ...this.state };
+    styles.fontSize = e.target.value;
+    this.props.onPress(styles);
     this.setState({ fontSize: e.target.value });
-    this.props.onPress(this.state.fontSize);
   }
 
   handleColorChange(e) {
+    // this.setState({ color: e.target.value });
+    // //this.props.onPress(this.state.color);
+
+    let styles = { ...this.state };
+    styles.color = e.target.value;
+    this.props.onPress(styles);
     this.setState({ color: e.target.value });
-    this.props.onPress(this.state.color);
   }
 
   handleBoldClick() {
-    this.setState((prevState) => ({ bold: !prevState.bold }));
-    this.props.onPress(this.state.bold);
+    let styles = { ...this.state };
+    styles.fontWeight = this.state.fontWeight === "bold" ? "normal" : "bold";
+    this.props.onPress(styles);
+    this.setState({ fontWeight: styles.fontWeight, bold: !this.state.bold });
   }
 
   handleItalicClick() {
-    this.setState((prevState) => ({ italic: !prevState.italic }));
-    this.props.onPress(this.state.italic);
+    let styles = { ...this.state };
+    styles.fontStyle = this.state.fontStyle === "italic" ? "normal" : "italic";
+    this.props.onPress(styles);
+    this.setState({ fontStyle: styles.fontStyle, italic: !this.state.italic });
   }
   render() {
     const { fontSize, color, bold, italic } = this.state;

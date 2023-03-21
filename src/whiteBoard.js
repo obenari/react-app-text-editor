@@ -20,7 +20,7 @@ class WhiteBoard extends Component {
     return (
       <div>
         {myStringArray.map((substring, index) => (
-          <div key={index} style={this.state.styles}>
+          <div key={index} style={this.props.newStyle}>
             {substring}
           </div>
         ))}
@@ -36,6 +36,13 @@ class WhiteBoard extends Component {
       width: "94%",
       whiteSpace: "pre-wrap",
     };
+    let newStyle = this.props.newStyle;
+    // newStyle = JSON.parse(newStyle);
+    // newStyle["marginLeft"] = "3%";
+    // newStyle["marginRight"] = "3%";
+    // newStyle["height"] = "60%";
+    // newStyle["width"] = "94%";
+    // newStyle["whiteSpace"] = "pre-wrap";
     return (
       <div style={styles} className="whiteBoard">
         {this.spliteText()}
