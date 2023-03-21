@@ -5,6 +5,13 @@ class WhiteBoard extends Component {
     super(props);
     this.state = {
       text: "",
+      styles: {
+        fontSize: "16px",
+        color: "#000000",
+        fontStyle: "unitalic",
+        fontWeight: "unbold",
+        textDecorationLine: "ununderline",
+      },
     };
   }
 
@@ -13,7 +20,9 @@ class WhiteBoard extends Component {
     return (
       <div>
         {myStringArray.map((substring, index) => (
-          <div key={index}>{substring}</div>
+          <div key={index} style={this.state.styles}>
+            {substring}
+          </div>
         ))}
       </div>
     );
