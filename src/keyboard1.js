@@ -4,6 +4,7 @@ import {
   englishLayoutUpperCase,
   hebrewLayout,
   emojiList,
+  shiftLayout,
   keyClasses,
   emojiList1,
 } from "./keyboardTypes.js";
@@ -60,7 +61,14 @@ class Keybord1 extends Component {
         /* this.setState({ flagEmoji: true });*/
         break;
       }
-
+      case "shiftl": {
+        this.setState({ keyboardLayout: shiftLayout });
+        break;
+      }
+      case "shiftr": {
+        this.setState({ keyboardLayout: shiftLayout });
+        break;
+      }
       default: {
         this.props.onPress(key);
       }
@@ -104,6 +112,27 @@ class Keybord1 extends Component {
           ))}
         </div>
       );
+    } else if (this.state.keyboardLayout === shiftLayout) {
+      return (
+        <div>
+          {this.state.keyboardLayout.map((row) => (
+            <div
+              key={row[0] + "div"}
+              style={{ width: "100%", display: "flex" }}
+            >
+              {row.map((key) => (
+                <button
+                  className={keyClasses[key] + " shift-layout-btn"}
+                  key={key}
+                  onClick={() => this.checKey(key)}
+                >
+                  {key}
+                </button>
+              ))}
+            </div>
+          ))}
+        </div>
+      );
     } else {
       return (
         <div>
@@ -128,7 +157,7 @@ class Keybord1 extends Component {
     }
   }
   render() {
-    return <div className="keyboard">{this.mapKeyboard()};</div>;
+    return <div className="keyboard">{this.mapKeyboard()}</div>;
   }
 }
 

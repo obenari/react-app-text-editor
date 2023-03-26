@@ -60,20 +60,45 @@ class Toolbar extends Component {
   }
   render() {
     const { fontSize, color, bold, italic } = this.state;
+    let style1 = { borderRadius: "10px", padding: "10px " };
+    let style2 = {
+      borderRadius: "10px",
+      border: "2px solid black",
+      height: "auto",
+    };
+
     return (
-      <div>
-        <button onClick={this.handleBoldClick}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          rowGap: "10%",
+        }}
+      >
+        <button style={style1} onClick={this.handleBoldClick}>
           {bold ? "Unbold" : "Bold"}
         </button>
-        <button onClick={this.handleItalicClick}>
+        <button onClick={this.handleItalicClick} style={style1}>
           {italic ? "Unitalicize" : "Italicize"}
         </button>
-        <select value={fontSize} onChange={this.handleFontSizeChange}>
+        <select
+          value={fontSize}
+          onChange={this.handleFontSizeChange}
+          style={style2}
+        >
           <option value="16px">16</option>
           <option value="18px">18</option>
           <option value="20px">20</option>
         </select>
-        <input type="color" value={color} onChange={this.handleColorChange} />
+        <input
+          type="color"
+          value={color}
+          onChange={this.handleColorChange}
+          style={style2}
+        />
+        <button style={style1} onClick={() => this.props.onCleanText()}>
+          clean text{" "}
+        </button>
       </div>
     );
   }

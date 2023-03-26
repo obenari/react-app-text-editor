@@ -64,7 +64,28 @@ export const hebrewLayout = [
   ["shiftl", "ז", "ס", "ב", "ה", "נ", "מ", "צ", "ת", "ץ", ".", "shiftr"],
   ["English", "emoji", "Space", ".com", "@"],
 ];
-
+export const shiftLayout = [
+  [
+    "`",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "-",
+    "=",
+    "Backspace",
+  ],
+  ["!", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "Enter"],
+  ["Tab", "|", "~", '"', ":", "{", "}"],
+  ["CapsLock", ",", "<", ">", "?", "."],
+  ["hebrew", "emoji", "Space", ".com", "@"],
+];
 export const emojiList1 = [
   [
     "\uD83D\uDE00",

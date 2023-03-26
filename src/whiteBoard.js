@@ -15,14 +15,31 @@ class WhiteBoard extends Component {
     };
   }
 
-  spliteText() {
-    const myStringArray = this.props.text.split("\n");
+  splitByStyle() {
+    let splitedText = [];
+    const text = this.props.text;
+    const styleList = this.props.newStyle;
+    for (let i = 0; i < styleList.length - 1; i++) {
+      let txt = text.slice(
+        styleList[i].startIndex,
+        styleList[i + 1].startIndex
+      );
+      splitedText.push(txt);
+    }
+    if (styleList.length === 1) {
+      splitedText.push(text);
+    } else {
+      let len = styleList.length;
+      let txt = text.slice(styleList[len - 1].startIndex);
+      splitedText.push(txt);
+    }
+
     return (
       <div>
-        {myStringArray.map((substring, index) => (
-          <div key={index} style={this.props.newStyle}>
+        {splitedText.map((substring, index) => (
+          <span key={index} style={styleList[index]}>
             {substring}
-          </div>
+          </span>
         ))}
       </div>
     );
@@ -36,16 +53,10 @@ class WhiteBoard extends Component {
       width: "94%",
       whiteSpace: "pre-wrap",
     };
-    let newStyle = this.props.newStyle;
-    // newStyle = JSON.parse(newStyle);
-    // newStyle["marginLeft"] = "3%";
-    // newStyle["marginRight"] = "3%";
-    // newStyle["height"] = "60%";
-    // newStyle["width"] = "94%";
-    // newStyle["whiteSpace"] = "pre-wrap";
+
     return (
       <div style={styles} className="whiteBoard">
-        {this.spliteText()}
+        {this.splitByStyle()}
       </div>
     );
   }
