@@ -22,6 +22,8 @@ class KeyBoardContainer extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleStylePress = this.handleStylePress.bind(this);
     this.handleCleanText = this.handleCleanText.bind(this);
+    this.handleChangeTheWholeTextStyle =
+      this.handleChangeTheWholeTextStyle.bind(this);
   }
   isEmojiText(str) {
     for (let lst of emojiList1) {
@@ -82,6 +84,18 @@ class KeyBoardContainer extends Component {
       ],
     });
   }
+
+  handleChangeTheWholeTextStyle(styleType, value) {
+    let styles = this.state.style;
+    let newStyleList = [];
+    for (let i = 0; i < styles.length; i++) {
+      let s = { ...styles[i] };
+      s[styleType] = value;
+      newStyleList.push(s);
+    }
+    this.setState({ style: newStyleList });
+  }
+
   render() {
     return (
       <div style={{ height: "100%" }}>
@@ -89,6 +103,7 @@ class KeyBoardContainer extends Component {
         <Toolbar
           onPress={this.handleStylePress}
           onCleanText={this.handleCleanText}
+          onChangeTheWholeText={this.handleChangeTheWholeTextStyle}
         />
         <Keyboard1
           onPress={this.handleKeyPress}

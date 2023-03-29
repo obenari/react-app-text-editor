@@ -11,11 +11,13 @@ class Toolbar extends Component {
       fontWeight: "unbold",
       fontStyle: "unitalic",
       italic: false,
+      changeTheWholeText: false,
     };
     this.handleFontSizeChange = this.handleFontSizeChange.bind(this);
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleBoldClick = this.handleBoldClick.bind(this);
     this.handleItalicClick = this.handleItalicClick.bind(this);
+    this.handleChangeCheckbox = this.handleChangeCheckbox.bind(this);
     // this.styles = {
     //   fontSize: "16px",
     //   color: "#000000",
@@ -25,38 +27,55 @@ class Toolbar extends Component {
   }
 
   handleFontSizeChange(e) {
-    //this.setState({ fontSize: e.target.value });
-    //this.state.fontSize = e.target.value;
-    //this.props.onPress(this.state.fontSize);
-    //this.styles.fontSize = e.target.value;
-    let styles = { ...this.state };
-    styles.fontSize = e.target.value;
-    this.props.onPress(styles);
-    this.setState({ fontSize: e.target.value });
+    let newValue = e.target.value;
+    if (this.state.changeTheWholeText) {
+      this.props.onChangeTheWholeText("fontSize", newValue);
+    } else {
+      let styles = { ...this.state };
+      styles.fontSize = newValue;
+      this.props.onPress(styles);
+    }
+    this.setState({ fontSize: newValue });
   }
 
   handleColorChange(e) {
-    // this.setState({ color: e.target.value });
-    // //this.props.onPress(this.state.color);
-
-    let styles = { ...this.state };
-    styles.color = e.target.value;
-    this.props.onPress(styles);
-    this.setState({ color: e.target.value });
+    let newValue = e.target.value;
+    if (this.state.changeTheWholeText) {
+      this.props.onChangeTheWholeText("color", newValue);
+    } else {
+      let styles = { ...this.state };
+      styles.color = newValue;
+      this.props.onPress(styles);
+    }
+    this.setState({ color: newValue });
   }
 
   handleBoldClick() {
-    let styles = { ...this.state };
-    styles.fontWeight = this.state.fontWeight === "bold" ? "normal" : "bold";
-    this.props.onPress(styles);
-    this.setState({ fontWeight: styles.fontWeight, bold: !this.state.bold });
+    let newValue = this.state.fontWeight === "bold" ? "normal" : "bold";
+    if (this.state.changeTheWholeText) {
+      this.props.onChangeTheWholeText("fontWeight", newValue);
+    } else {
+      let styles = { ...this.state };
+      styles.fontWeight = newValue;
+      this.props.onPress(styles);
+    }
+    this.setState({ fontWeight: newValue, bold: !this.state.bold });
   }
 
   handleItalicClick() {
-    let styles = { ...this.state };
-    styles.fontStyle = this.state.fontStyle === "italic" ? "normal" : "italic";
-    this.props.onPress(styles);
-    this.setState({ fontStyle: styles.fontStyle, italic: !this.state.italic });
+    let newValue = this.state.fontStyle === "italic" ? "normal" : "italic";
+    if (this.state.changeTheWholeText) {
+      this.props.onChangeTheWholeText("fontStyle", newValue);
+    } else {
+      let styles = { ...this.state };
+      styles.fontStyle = newValue;
+      this.props.onPress(styles);
+    }
+    this.setState({ fontStyle: newValue, italic: !this.state.italic });
+  }
+
+  handleChangeCheckbox() {
+    this.setState({ changeTheWholeText: !this.state.changeTheWholeText });
   }
   render() {
     const { fontSize, color, bold, italic } = this.state;
@@ -97,8 +116,19 @@ class Toolbar extends Component {
           style={style2}
         />
         <button style={style1} onClick={() => this.props.onCleanText()}>
-          clean text{" "}
+          clean text
         </button>
+        <label className="switch" style={{ textAlign: "right" }}>
+          <input
+            type="checkbox"
+            onChange={() => this.handleChangeCheckbox()}
+            style={{ accentColor: "#1ea79a" }}
+          />
+          <span>
+            change style {<br />}
+            {"\t"}the whole text
+          </span>
+        </label>
       </div>
     );
   }
